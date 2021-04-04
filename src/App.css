@@ -194,3 +194,13 @@ h2 {
 .number3 {
   font-weight: 500;
 } */
+
+
+.btnStylePosition {
+    width: 200px;
+    place-items: stretch;
+  }
+  
+  .btnStylePosition button {
+    padding: 5px 12px;
+  }

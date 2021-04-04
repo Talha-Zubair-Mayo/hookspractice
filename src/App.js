@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useReducer, useRef, useState } from "react";
+//import ComA from "./UseContext/ComA";
 import "./App.css";
+import {BrowserRouter , Route, Router} from  "react-router-dom";
+import Nav from "./myapp/nav";
+import About from "./myapp/about";
+import Index from "./myapp/index";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /* #1: React Hooks in Hindi | When & Why to use useState() Hook in React */
 
@@ -570,38 +577,135 @@ import "./App.css";
 
 /* #18: Ref & useRef Hooks | Controlled and Uncontrolled Form Components */
 
-const App = () => {
-  const [count, setCount] = useState(window.screen.width);
+// const App = () => {
 
-  const width = () => {
-    setCount(window.screen.width);
-  };
+//     const Name = useRef(null);
+//     const[show, setShow] = useState(false);
 
-  useEffect(() => {
-    console.log(`Add Event`);
-    window.addEventListener("resize", width);
+//     const submit = (e)=>
+//     {
+//         e.preventDefault();
 
-    /*Clean Up Function  */
-    return () => {
-      console.log(`Removed`);
-      window.addEventListener("resize", width);
-    };
-  });
-  return (<>
+//        const Namee = Name.current.value;
+//        Namee === "" ? alert("plz fill the data") : setShow(true);
+//     }
 
-<div>
-      <form action="">
-        <div>
-          <label htmlFor="luckyName">enter your luckyName</label>
-          <input type="text" id="luckyName" />
-        </div>
-        <br />
-        <button>Submit</button>
-      </form>
-      <p> </p>
-    </div>
+//   return (
+//     <>
+//       <div>
+//         <form action="" onSubmit={submit}>
+//           <div>
+//             <label htmlFor="luckyName">enter your luckyName</label>
+//             <input type="text" id="luckyName"  ref={Name}/>
+//           </div>
+//           <br />
+//           <button>Submit</button>
+//         </form>
+//         <p> { show ? `your lucky name is ${Name.current.value}` : ""} </p>
+//       </div>
+//     </>
+//   );
+// };
+// export default App;
 
+/*#20: What is useReducer Hook in React */
+
+// const App = () => {
+
+//   const initialState = 0;
+
+//     const reducer = (state , action)=>
+//     {
+//       if (action.type === "INCREMENT")
+//       {
+//         return state +1;
+//       }
+//       else if (action.type === "DECREMENT")
+//       {
+
+//         return state -1;
+//       }
+//       return state;  
+//     }
+  
+
+//   const [state, dispatch] = useReducer(reducer, initialState);
+//   return (
+//     <>
+//       <div>
+//         <p>{state}</p>
+//         <div className="btnStylePosition">
+//           <button onClick={()=> dispatch({type: "INCREMENT"})}> Inc </button>
+//           <button onClick={()=> dispatch({type: "DECREMENT"})}> Dec </button>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default App;
+
+/*#22: Create Your Own Custom Hooks in React */
+
+// const App = ()=>
+// {
+
+//   return<>
+
+//       <ComA />
+
+//   </>
+// }
+
+// export default App;
+// const App = ()=>
+// {
+
+//   return<>
+    
+     
+//             <BrowserRouter>
+//             <Nav />
+//              <Route path="/index">
+//                 <Index />
+//              </Route>
+//              <Route path="/About">
+//                 <About />
+//              </Route>
+            
+//              </BrowserRouter>
+//   </>
+// }
+
+// export default App;
+
+/* #24: React-Toastify | React Toast Notifications  */
+
+const App = ()=>
+{
+
+  const toasti = ()=>
+  {
+    toast.success('Loged in', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
+  return<>
+    
+    <h1>Hello Login Please</h1>
+
+    <button className="btn"  onClick={toasti}>login please </button>
+
+    <ToastContainer />
+    
   </>
-  );
-};
+}
+
 export default App;
+
